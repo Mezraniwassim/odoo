@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Checkout the repository containing the YAML and Terraform files
-                git branch: 'main', url: 'https://github.com/Mezraniwassim/odoo.git'
+                git 'https://github.com/Mezraniwassim/odoo.git'
             }
         }
 
@@ -63,7 +63,9 @@ pipeline {
 
     post {
         always {
-            cleanWs()
+            node {
+                cleanWs()
+            }
         }
     }
 }
